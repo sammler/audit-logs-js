@@ -1,0 +1,35 @@
+{
+  "name": "@s5r/audit-logs",
+  "version": "0.0.1",
+  "description": "Node.js library to send audit-logs to the s5r/auth-service.",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "nyc report",
+    "test": "npm run test:unit && npm run test:integration && npm run coverage",
+    "test:integration": "export JWT_SECRET='My Secret' && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
+    "test:integration:watch": "export JWT_SECRET='My Secret' && npm run test:unit && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
+    "test:unit": "nyc --reporter=lcov mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'",
+    "test:watch": "export JWT_SECRET='My Secret' && nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammler/audit-logs-js.git"
+  },
+  "author": "Stefan Walther <swr.nixda@gmail.com> (http://qliksite.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sammler/audit-logs-js/issues"
+  },
+  "homepage": "https://github.com/sammler/audit-logs-js#readme",
+  "dependencies": {
+    "node-nats-streaming": "0.0.50",
+    "winster": "^0.2.13"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "codecov": "^3.1.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  }
+}
