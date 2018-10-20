@@ -1,9 +1,15 @@
 {
   "name": "sammler-io-audit-logs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js library to send audit-logs to the s5r/auth-service.",
   "main": "index.js",
   "scripts": {
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:fix": "npm run lint:src:fix && npm run lint:test:fix",
+    "lint:src": "eslint src",
+    "lint:src:fix": "eslint src --fix",
+    "lint:test": "eslint test",
+    "lint:test:fix": "eslint test --fix",
     "coverage": "nyc report",
     "test": "npm run test:unit && npm run test:integration && npm run coverage",
     "test:integration": "export JWT_SECRET='My Secret' && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
@@ -29,6 +35,8 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.1.0",
+    "eslint": "^5.7.0",
+    "eslint-config-space-single": "^0.3.5",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0"
   }

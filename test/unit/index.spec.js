@@ -1,11 +1,10 @@
 const AuditLogger = require('./../../src/index');
 
 describe('1) audit-logs-js => Unit tests => Basics', () => {
-
   let auditLogger;
   const natsOpts = {
-    'NATS_SERVER': 'localhost',
-    'NATS_PORT': 2000
+    NATS_SERVER: 'localhost',
+    NATS_PORT: 2000
   };
 
   beforeEach(() => {
@@ -19,5 +18,4 @@ describe('1) audit-logs-js => Unit tests => Basics', () => {
     let logger = new AuditLogger(natsOpts);
     expect(logger.natsOpts).to.be.deep.equal(natsOpts);
   });
-
 });
