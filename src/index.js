@@ -10,6 +10,7 @@ class AuditLogger {
     this.clientId = (connectionOpts && connectionOpts.clientId) || 'audi-logs-js';
     this.server = (connectionOpts && connectionOpts.server) || 'nats://localhost:4222';
 
+    this.connectionOpts = connectionOpts;
     this.natsOpts = natsOpts;
     this.logger = Logger.instance();
   }
@@ -26,8 +27,15 @@ class AuditLogger {
     const that = this;
     const msg = cloudEvent || {};
 
+    if (!subject) {
+      let eMsg = 'Cannot proceed with the audit-log, arg `subject` is missing.';
+      this.logger.fatal(eMsg);
+      throw new Error(eMsg);
+    }
     if (!cloudEvent) {
-      this.logger.error('Cannot proceed with the audit-log, arg `cloudEvent` is missing.');
+      let eMsg = 'Cannot proceed with the audit-log, arg `cloudEvent` is missing.';
+      this.logger.fatal(eMsg);
+      throw new Error(eMsg);
     }
 
     let stan = Stan.connect(this.clusterId, this.clientId, this.server);

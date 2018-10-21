@@ -1,6 +1,6 @@
 {
   "name": "sammler-io-audit-logs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node.js library to send audit-logs to the s5r/auth-service.",
   "main": "index.js",
   "scripts": {
