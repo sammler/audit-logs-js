@@ -51,10 +51,10 @@ class AuditLogger {
         }
         stan.close();
         that.logger.verbose('we are disconnected');
+        this.logger.verbose('OK, we have logged something ...');
       });
     });
 
-    this.logger.verbose('OK, we have logged something ...');
   }
 
 }
