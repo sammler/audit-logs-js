@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/sammler/audit-logs-js#readme",
   "dependencies": {
-    "node-nats-streaming": "0.0.50",
+    "node-nats-streaming": "0.3.2",
     "winster": "^0.2.13"
   },
   "devDependencies": {
